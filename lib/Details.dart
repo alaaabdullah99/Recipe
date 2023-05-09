@@ -29,21 +29,23 @@ class _DetailsState extends State<Details> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-          Container(
-          width: 450,
-          height: 150.9,
-
-          child: ClipRRect(
-            child: Image.network(widget.recipe.image,
-              width: 400,
-              height: 150.9,
-              fit: BoxFit.cover,
-            )
-
-          ),
-        ),
+         Stack(
+           children: [
+             Container(
+               margin:EdgeInsets.fromLTRB(15,15,15,0) ,
+               width: 450,
+               height: 150.9,
+               decoration: BoxDecoration(
+                 borderRadius: BorderRadius.circular(20),
+                   image: DecorationImage(
+                   image: NetworkImage(widget.recipe.image),
+                   fit: BoxFit.cover,),
+               ),
+             ),
+           ],
+         ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 20),
+              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0,0),
               child: Text(
                 widget.recipe.name,
                 textAlign:TextAlign.center,
@@ -58,49 +60,59 @@ class _DetailsState extends State<Details> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
-                  children: [
-                    Row(
-                      children:  [
+
+                    Container(
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                        color: Colors.lightBlue.shade50,),
+                        padding:EdgeInsets.fromLTRB(10,10,10,10) ,
+                        margin:EdgeInsets.fromLTRB(10,10,10,0) ,
+                        height: 80,width: 90,
+                    child:Column(
+                      children: [
                         Icon(
                           Icons.access_time,
                           color: Color(0xFF4A7EB4),
                           size: 30,),
-                        Text(widget.recipe.time.toString()+" Min", style: TextStyle(fontSize: 25),),
+                        Text(widget.recipe.time.toString()+" MIN",
+                          style: TextStyle( color: Color(0xFF4A7EB4),fontSize: 20),),
+
                       ],
-                    )
-                  ],
-                ),
-                Padding(
-                  padding:EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
-                child:Column(
-                children: [
-                Row(
-                children:  [
-                  Icon(
-                  Icons.star_rate,
-                  color: Colors.amber,
-                  size: 30,),
-                Text("2",
-                  style: TextStyle(fontSize: 25),),
-              ],
-            )
-          ],
-        ),),
-                Column(
-                  children: [
-                    Row(
+                    )),
+
+                Container(
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                      color: Colors.yellow.shade100,),
+                    padding:EdgeInsets.fromLTRB(10,10,10,10) ,
+                    margin:EdgeInsets.fromLTRB(10,10,10,0) ,
+                    height: 80,width: 90,
+                    child:Column(
+                      children: [
+                        Icon(
+                          Icons.star_rate,
+                          color: Colors.amber,
+                          size: 30,),
+                        Text("2",
+                          style: TextStyle(color: Colors.amber,fontSize: 25),),
+                      ],
+                    )),
+
+                Container(
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                      color: Colors.red.shade50,),
+                    padding:EdgeInsets.fromLTRB(10,10,10,10) ,
+                    margin:EdgeInsets.fromLTRB(10,10,10,0) ,
+                    height: 80,width: 90,
+                    child:Column(
                       children: [
                         Icon(
                           Icons.people,
                           color: Color(0xFFEB275B),
                           size: 30,),
                         Text(widget.recipe.personNum.toString(),
-                          style: TextStyle(fontSize: 25),),
+                          style: TextStyle(color: Color(0xFFEB275B),fontSize: 25),),
                       ],
-                    )
-                  ],
-                )
+                    )),
+
               ],
             ),
 
@@ -122,7 +134,7 @@ class _DetailsState extends State<Details> {
              Align(
               alignment: AlignmentDirectional(-0.65, 0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(15, 15, 0, 25),
+                padding: EdgeInsetsDirectional.fromSTEB(15, 15, 0, 15),
                 child: Text(
                   widget.recipe.description,
                   style: TextStyle(fontSize: 20,color: Colors.grey ),
@@ -132,7 +144,7 @@ class _DetailsState extends State<Details> {
              Align(
               alignment: AlignmentDirectional(-0.9, 0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 15, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(10,0, 0, 0),
                 child: Text(
                   'Instruction',
                   textAlign: TextAlign.start,
